@@ -1,8 +1,9 @@
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import HomeScreen from '../screens/HomeScreen';
-import UserList from '../screens/userList';
-import UserProfile from '../screens/userPorfile';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import TabRouter from './tab-routes';
+import AddEditEmployee from '../screens/add-edit-employee/add-edit-employee';
+import AddEditTemMembers from '../screens/add-edit-team-members';
 const Stack = createStackNavigator();
 const Routes = () => {
   return (
@@ -11,12 +12,14 @@ const Routes = () => {
         screenOptions={{
           headerShown: false,
         }}>
-        <Stack.Screen name="HomeScreen" component={HomeScreen} />
-        <Stack.Screen name="UserList" component={UserList} />
+        <Stack.Screen name="TabRouter" component={TabRouter} />
+        <Stack.Screen name="AddEditEmployee" component={AddEditEmployee}
+          options={{ presentation: 'modal', animationTypeForReplace: 'push' }}
+        />
         <Stack.Screen
-          name="UserProfile"
-          component={UserProfile}
-          options={{presentation: 'modal', animationTypeForReplace: 'push'}}
+          name="AddEditTemMembers"
+          component={AddEditTemMembers}
+          options={{ presentation: 'modal', animationTypeForReplace: 'push' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
